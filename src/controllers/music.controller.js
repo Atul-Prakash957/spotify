@@ -1,5 +1,5 @@
-const musicModel = require("../routes/models/music.model");
-const albumModel = require("../routes/models/album.model");
+const musicModel = require("../models/music.model");
+const albumModel = require("../models/album.model");
 const { uploadFile } = require("../services/storage.service")
 const jwt = require("jsonwebtoken");
 

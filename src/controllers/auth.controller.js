@@ -8,7 +8,7 @@ async function registerUser(req, res) {
     const { username, email, password, role = "user" } = req.body;
 
     const isUserAlreadyExists = await userModel.findOne({
-        $or: [
+        $or: [                    // $or -> either any one exist 
             { username },
             { email }
         ]
@@ -18,7 +18,7 @@ async function registerUser(req, res) {
         return res.status(409).json({ message: "User already exists" })
     }
 
-    const hash = await bcrypt.hash(password, 10)
+    const hash = await bcrypt.hash(password, 10)  // 10->salt , delay attack
 
     const user = await userModel.create({
         username,
@@ -67,7 +67,8 @@ async function loginUser(req, res) {
 
 
     const isPasswordValid = await bcrypt.compare(password, user.password)
-
+// user.password from databse , pasword from input , bcrypt - convert the 
+// paswrod into hash then compare as hash is savved in db
 
     if (!isPasswordValid) {
         return res.status(401).json({ message: "Invalid credentials" })

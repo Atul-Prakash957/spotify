@@ -1,6 +1,6 @@
 const express = require('express');
-const musicController = require("../../controllers/music.controller")
-const authMiddleware = require("../../middlewares/auth.middleware")
+const musicController = require("../controllers/music.controller")
+const authMiddleware = require("../middlewares/auth.middleware")
 const multer = require('multer');
 
 const upload = multer({

@@ -17,6 +17,8 @@ async function authArtist(req, res, next) {
             return res.status(403).json({ message: "You don't have access" })
         }
 
+
+        
         req.user = decoded;
 
         next()
